@@ -5,15 +5,13 @@ The isoweek module provide the class *Week*.  Instances represent specific weeks
 spanning Monday to Sunday.  There are 52 or 53 numbered weeks in a year.  Week
 1 is defined to be the first week with 4 or more days in January.
 
-It's called isoweek because this is the week definition of ISO 8601.  This
+It's called isoweek because this is the week definition of `ISO 8601 <https://en.wikipedia.org/wiki/ISO_week_date>`_.  This
 standard also define a notation for identifying weeks; YYYYWww (where the "W"
 is a literal).  An example is "2011W08" which denotes the 8th week of year
 2011.  *Week* instances stringify to this form.
 
-See also http://en.wikipedia.org/wiki/ISO_week_date
-
 The *Week* instances are light weight and immutable with an interface similar
-to the datetime.date objects.  Example code::
+to the datetime.date objects. Example code::
 
     from isoweek import Week
     w = Week(2011, 20)
@@ -53,10 +51,10 @@ Other constructors, all class methods:
     Return the week that contains the given datetime.date.
 
 *classmethod* Week.weeks_of_year(*year*)
-    Returns an iterator over the weeks of the given year.
+    Return an iterator over the weeks of the given year.
 
 *classmethod* Week.last_week_of_year(*year*)
-    Returns the last week of the given year.
+    Return the last week of the given year.
 
 Instance attributes (read-only):
 
@@ -71,8 +69,8 @@ Supported operations:
      ====================     ==========================================================
      Operation                Result
      ====================     ==========================================================
-     week1 = week2 + int      week2 is int weeks removed from week1.
-     week1 = week2 - int      Computes week2 such that week2 + int == week1
+     week2 = week1 + int      Adds `int` weeks to week1 and store the result in week2
+     week2 = week1 - int      Removes `int` weeks to week1 and store the result in week2
      int = week1 - week2      Computes int such that week2 + int == week1
      week1 < week2            week1 is considered less than week2 when week1 precedes week2 in time.
      ====================     ==========================================================
@@ -88,24 +86,24 @@ Week.toordinal()
     starts the first week.
 
 Week.day(*num*)
-    Return the given day of week as a datetime.date object.
+    Return the given day of week as a ``datetime.date`` object.
     Day 0 is Monday.
 
 Week.monday(), Week.tuesday(),.. Week.sunday()
-    Return the given day of week as a datetime.date object.
+    Return the given day of week as a ``datetime.date`` object.
 
 Week.days()
-    Returns the 7 days of the week as a list.
+    Return the 7 days of the week as a list.
 
 Week.contains(day)
-    Check if the given datetime.date falls within the week.
+    Check if the given ``datetime.date`` falls within the week.
 
 Week.isoformat()
-    Return a string representing the week in ISO 8610 format, "YYYYWww".
-    For example Week(2011, 8).isoformat() == '2011W08'.
+    Return a string representing the week in ISO 8610 format ie. "YYYYWww".
+    For example, ``Week(2011, 8).isoformat() == '2011W08'``.
 
 Week.__str__()
-    For a Week w, str(w) is equivalent to w.isoformat()
+    Equivalent to ``Week.isoformat()``.
 
 Week.__repr__()
-    Return a string like "isoweek.Week(2011, 2)".
+    Return a string similar to ``isoweek.Week(2011, 2)``.
